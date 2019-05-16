@@ -1,0 +1,25 @@
+{
+	"version":"LAYAAVATAR:01",
+	"rootNode":{
+		"props":{
+			"name":"gongche",
+			"translate":[
+				-4.89,
+				-5.2,
+				-10.35
+			],
+			"rotation":[
+				0.7071068,
+				0,
+				0,
+				-0.7071068
+			],
+			"scale":[
+				0.3,
+				0.3,
+				0.3
+			]
+		},
+		"child":[]
+	}
+}
