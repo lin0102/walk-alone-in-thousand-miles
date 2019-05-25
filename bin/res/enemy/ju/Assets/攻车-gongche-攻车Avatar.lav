@@ -2,11 +2,11 @@
 	"version":"LAYAAVATAR:01",
 	"rootNode":{
 		"props":{
-			"name":"pao",
+			"name":"gongche",
 			"translate":[
-				-4.89,
-				-5.2,
-				-10.86
+				0,
+				0,
+				0
 			],
 			"rotation":[
 				0.7071068,
