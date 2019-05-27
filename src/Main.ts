@@ -1,5 +1,9 @@
 import GameConfig from "./GameConfig";
+import GameStart from './script/GameStart'
+
 class Main {
+	public static gameStart:GameStart
+
 	constructor() {
 		//根据IDE设置初始化引擎		
 		if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
@@ -8,6 +12,7 @@ class Main {
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
 		Laya.stage.scaleMode = GameConfig.scaleMode;
 		Laya.stage.screenMode = GameConfig.screenMode;
+		Laya.stage.bgColor = "#cee1ff";
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
@@ -27,8 +32,8 @@ class Main {
 	}
 
 	onConfigLoaded(): void {
-		//加载IDE指定的场景
-		GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
+		Main.gameStart = new GameStart()
+		Laya.stage.addChild(Main.gameStart)
 	}
 }
 //激活启动类

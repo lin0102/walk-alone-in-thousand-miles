@@ -1,9 +1,9 @@
 if ((typeof swan !== 'undefined') && (typeof swanGlobal !== 'undefined')) {
 	require("swan-game-adapter.js");
-	require("libs/laya.bdmini31f01ec7.js");
+	require("libs/laya.bdmini.js");
 } else if (typeof wx!=="undefined") {
 	require("weapp-adapter.js");
-	require("libs/laya.wxmini6b87b4a2.js");
+	require("libs/laya.wxmini.js");
 }
 window.loadLib = require;
-require("index8f38f069.js");
+require("index.js");
