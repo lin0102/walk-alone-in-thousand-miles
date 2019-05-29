@@ -1,4 +1,14 @@
 D .
+D gameIntro
+P DC465287 back.png
+D gameover
+P 07EE7583 againGame.png
+P D6F457FB backHome.png
+P EBB8A170 player.png
+P F28C0EAA scoreBoard.png
+P 9F7E61EA thisScore-text.png
+D gameRanking
+P 533D50AB myRank.png
 D gamestart
 P 446E1DA9 begin.png
 P D1405AFA intro-text.png

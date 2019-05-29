@@ -2,7 +2,7 @@ import GameConfig from "./GameConfig";
 import GameStart from './script/GameStart'
 
 class Main {
-	public static gameStart:GameStart
+	public gameStart:GameStart
 
 	constructor() {
 		//根据IDE设置初始化引擎		
@@ -32,8 +32,23 @@ class Main {
 	}
 
 	onConfigLoaded(): void {
-		Main.gameStart = new GameStart()
-		Laya.stage.addChild(Main.gameStart)
+		const resource = [
+            "res/marshal.ls",
+            "res/enemy/ju/ju.lh",
+            "res/enemy/ma/ma.lh",
+            "res/marshal/marshal.lh",
+            "res/enemy/pao/pao.lh",
+            "res/enemy/shi/shi.lh",
+            "res/enemy/xiang/xiang.lh",
+            "res/enemy/zu/zu.lh"
+        ]
+        Laya.loader.create(resource, Laya.Handler.create(this, this.onModelLoaded));
+		
+	}
+
+	onModelLoaded() {
+		this.gameStart = new GameStart()
+		Laya.stage.addChild(this.gameStart)
 	}
 }
 //激活启动类

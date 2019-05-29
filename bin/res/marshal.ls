@@ -76,7 +76,7 @@
 					"position":[
 						0,
 						0.56,
-						2.66
+						2.97
 					],
 					"rotation":[
 						0,
@@ -101,44 +101,10 @@
 						1
 					],
 					"clearColor":[
-						0.1921569,
-						0.3019608,
-						0.4745098,
+						0.3647058,
+						0.6784313,
+						0.8862745,
 						0
-					]
-				},
-				"components":[],
-				"child":[]
-			},
-			{
-				"type":"DirectionLight",
-				"props":{
-					"name":"Directional light",
-					"active":true,
-					"isStatic":false,
-					"layer":0,
-					"position":[
-						6.299,
-						2.369,
-						-8.933
-					],
-					"rotation":[
-						0.1093816,
-						0.8754261,
-						0.4082179,
-						-0.2345697
-					],
-					"scale":[
-						1,
-						1,
-						1
-					],
-					"intensity":1,
-					"lightmapBakedType":0,
-					"color":[
-						1,
-						1,
-						1
 					]
 				},
 				"components":[],
