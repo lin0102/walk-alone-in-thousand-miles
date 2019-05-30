@@ -2,7 +2,7 @@
 	"version":"LAYAMATERIAL:02",
 	"props":{
 		"type":"Laya.BlinnPhongMaterial",
-		"name":"shouche-psd 1",
+		"name":"TGA",
 		"renderStates":[
 			{
 				"cull":2,
@@ -26,7 +26,7 @@
 		"textures":[
 			{
 				"name":"albedoTexture",
-				"path":"../shouche-psd 1.jpg",
+				"path":"../TGA.jpg",
 				"constructParams":[
 					512,
 					512,

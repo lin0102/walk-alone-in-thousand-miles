@@ -47,7 +47,7 @@ class Main {
 	}
 
 	onModelLoaded() {
-		this.gameStart = new GameStart()
+		this.gameStart = new GameStart("-1")
 		Laya.stage.addChild(this.gameStart)
 	}
 }

@@ -7,12 +7,16 @@ export default class GameStart extends ui.gameStartUI {
     public gameView: GameView
     public gameRanking: GameRanking
     public gameIntro: GameIntro
+    protected Score: string = "30"
 
-    constructor() {
+    constructor(score: string) {
         super()
         this.begin.on(Laya.Event.CLICK, this, this.startGame)
         this.ranking.on(Laya.Event.CLICK, this, this.toRanking)
         this.intro.on(Laya.Event.CLICK, this, this.toIntro)
+        if(score !== "-1") {
+            this.Score = score
+        }
     }
     startGame() {
         this.destroy()
@@ -22,13 +26,13 @@ export default class GameStart extends ui.gameStartUI {
 
     toRanking() {
         this.destroy()
-        this.gameRanking = new GameRanking()
+        this.gameRanking = new GameRanking(this.Score)
         Laya.stage.addChild(this.gameRanking)
     }
 
     toIntro() {
         this.destroy()
-        this.gameIntro = new GameIntro()
+        this.gameIntro = new GameIntro(this.Score)
         Laya.stage.addChild(this.gameIntro)
     }
 }

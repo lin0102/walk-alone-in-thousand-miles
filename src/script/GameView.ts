@@ -20,8 +20,9 @@ export default class GameView extends ui.gameViewUI {
     protected MAXNUMOFSCENE: number = 1000
     protected i: number = 0
     protected mapLength: number = 3.54
-    protected tempVector3: Laya.Vector3 = new Laya.Vector3(0, 0, -0.018)
+    protected tempVector3: Laya.Vector3 = new Laya.Vector3(0, 0, -0.015)
     public gameOver: GameOver
+    protected enemyModel: Array<Object> = []
 
     constructor() {
         super()
@@ -43,10 +44,10 @@ export default class GameView extends ui.gameViewUI {
         this.marshalScript = this.marshal.addComponent(marshalMove)
 
         let light: Laya.DirectionLight = new Laya.DirectionLight()
-        // this.Scene.addChild(light)
+        this.Scene.addChild(light)
         light.color = new Laya.Vector3(1, 1, 1);
         let mat = light.transform.worldMatrix;
-        mat.setForward(new Laya.Vector3(-1.0, -1.0, -1.0));
+        mat.setForward(new Laya.Vector3(1.0, -1.0, 0.5));
         light.transform.worldMatrix = mat;
 
         let models = {}
@@ -79,14 +80,26 @@ export default class GameView extends ui.gameViewUI {
 
     //加载新场景的方法
     public addScene(models: ModelValue) {
+        const enemyModels = {}
         const enemyPosition = position[this.i].enemyPosition
         for (let i = 0, length = enemyPosition.length; i < length; i++) {
             const model: Laya.Sprite3D = models[enemyPosition[i].name].clone()
+            enemyModels[enemyPosition[i].name] = model
             const x: number = enemyPosition[i].x
             const y: number = enemyPosition[i].y
             this.Scene.addChild(model)
             model.transform.translate(this.coordinateToPosition(x, y, this.i), false)
+            if (enemyPosition[i].name === 'ma') {
+                const isPlus:number = y === 2 ? 40 : -40
+                model.transform.rotate(new Laya.Vector3(0, isPlus, 0), true, false)
+            } else if(enemyPosition[i].name === 'xiang') {
+                const isPlus = y === 2 ? 20 : -20
+                model.transform.rotate(new Laya.Vector3(0, isPlus, 0), true, false)
+            } else if(enemyPosition[i].name === 'ju') {        
+                model.transform.rotate(new Laya.Vector3(0, -20, 0), true, false)
+            }
         }
+        this.enemyModel[this.i] = enemyModels
         let cloneScene = models.sceneMesh.clone()
         this.Scene.addChild(cloneScene)
         cloneScene.transform.translate(new Laya.Vector3(0, 0, - this.mapLength * ++this.i), false)
@@ -112,11 +125,16 @@ export default class GameView extends ui.gameViewUI {
             Laya.timer.clear(this, this.addMoreScene)
             this.marshalScript.destroy()
             this.i = 0
+            this.enemyModel.length = 0
             Laya.stage.removeChild(this.Scene)
             this.destroy()
             this.gameOver = new GameOver(1.2 - this.marshal.transform.position.z)
             Laya.stage.addChild(this.gameOver)
             return
+        }
+        this.tempScore.text = Math.round(1.2 - this.marshal.transform.position.z).toString()
+        if(this.tempVector3.z > -0.03) {
+            this.tempVector3.z = this.tempVector3.z - 0.000011
         }
         this.Camera.transform.translate(this.tempVector3, false)
         this.marshal.transform.translate(this.tempVector3, false)
@@ -127,6 +145,13 @@ export default class GameView extends ui.gameViewUI {
         const z = this.marshal.transform.position.z
         const order = Math.floor((1.2 - z) / this.mapLength)
         const deadPosition = position[order].deadPosition
+        const enemyPosition = position[order].enemyPosition
+        for (let i = 0; i < enemyPosition.length; i++) {
+            const coordinate = this.coordinateToPosition(enemyPosition[i].x, enemyPosition[i].y, order)
+            if (x === coordinate.x && Math.abs(z - coordinate.z) < 0.02) {
+                this.enemyModel[order][enemyPosition[i].name].destroy()
+            }
+        }
         for (let i = 0; i < deadPosition.length; i++) {
             const coordinate = this.coordinateToPosition(deadPosition[i].x, deadPosition[i].y, order)
             if (x === coordinate.x && Math.abs(z - coordinate.z) < 0.01) {
@@ -134,6 +159,7 @@ export default class GameView extends ui.gameViewUI {
                 return true
             }
         }
+        return false
     }
 }
 

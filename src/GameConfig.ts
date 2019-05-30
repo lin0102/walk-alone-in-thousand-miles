@@ -6,7 +6,7 @@ import GameStart from "./script/GameStart"
 export default class GameConfig{
     static width:number=750;
     static height:number=1334;
-    static scaleMode:string="fixedwidth";
+    static scaleMode:string="exactfit";
     static screenMode:string="vertical";
     static alignV:string="top";
     static alignH:string="left";

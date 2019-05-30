@@ -24,9 +24,9 @@
 		},
 		"child":[
 			{
-				"type":"MeshSprite3D",
+				"type":"Sprite3D",
 				"props":{
-					"name":"shouche",
+					"name":"卒",
 					"active":true,
 					"isStatic":false,
 					"layer":0,
@@ -36,38 +36,55 @@
 						0
 					],
 					"rotation":[
-						0.7071068,
 						0,
+						1,
 						0,
-						-0.7071068
+						0
 					],
 					"scale":[
-						1,
-						1,
-						1
-					],
-					"meshPath":"Assets/shouche-士.lm",
-					"enableRender":true,
-					"materials":[
-						{
-							"type":"Laya.BlinnPhongMaterial",
-							"path":"Assets/Materials/shouche-psd 1.lmat"
-						}
+						0.02,
+						0.02,
+						0.02
 					]
 				},
-				"components":[
+				"components":[],
+				"child":[
 					{
-						"type":"Animator",
-						"avatar":{
-							"path":"Assets/shouche-shouche-shoucheAvatar.lav",
-							"linkSprites":{}
+						"type":"MeshSprite3D",
+						"props":{
+							"name":"1",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								0,
+								0,
+								0
+							],
+							"rotation":[
+								0,
+								0,
+								0,
+								-1
+							],
+							"scale":[
+								1,
+								1,
+								1
+							],
+							"meshPath":"Assets/卒-1.lm",
+							"enableRender":true,
+							"materials":[
+								{
+									"type":"Laya.BlinnPhongMaterial",
+									"path":"Assets/Materials/TGA.lmat"
+								}
+							]
 						},
-						"layers":[],
-						"cullingMode":0,
-						"playOnWake":true
+						"components":[],
+						"child":[]
 					}
-				],
-				"child":[]
+				]
 			}
 		]
 	}

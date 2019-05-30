@@ -4,7 +4,9 @@ P DC465287 back.png
 D gameover
 P 07EE7583 againGame.png
 P D6F457FB backHome.png
-P EBB8A170 player.png
+R CB243865 player1.jpg
+R 65543FC6 player2.jpg
+P BE65AF19 player3.jpg
 P F28C0EAA scoreBoard.png
 P 9F7E61EA thisScore-text.png
 D gameRanking
@@ -15,4 +17,4 @@ P D1405AFA intro-text.png
 P 991A7663 intro.png
 P F87BB939 ranking-text.png
 P 4B392BEA ranking.png
-P 3F337AEF title.png
+R 1B1E9B46 title.png
